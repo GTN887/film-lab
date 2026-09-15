@@ -1,4 +1,5 @@
 from pathlib import Path
+import pytest
 from film_lab.project import Project
 from film_lab.production import ProductionStore
 
@@ -19,3 +20,12 @@ def test_cinema_manifest_contains_selected_existing_media(tmp_path):
 
 def test_reject_take(tmp_path):
     p=Project.create("movie",data_root=tmp_path/"projects"); s=ProductionStore(p); t=s.add_take(_video(tmp_path),shot_id="shot_001"); assert s.set_status(t.id,"rejected").status=="rejected"
+
+def test_single_selected_take_exports_without_fake_render(tmp_path):
+    from film_lab.cinema_export import export_selected
+    p=Project.create("movie",data_root=tmp_path/"projects"); s=ProductionStore(p); t=s.add_take(_video(tmp_path,"only.mp4"),shot_id="shot_001"); s.set_status(t.id,"selected"); out=export_selected(p,tmp_path/"final.mp4"); assert out.read_bytes()==b"fake-mp4-for-store-test"
+
+def test_cinema_export_requires_selection(tmp_path):
+    from film_lab.cinema_export import export_selected
+    p=Project.create("movie",data_root=tmp_path/"projects")
+    with pytest.raises(ValueError,match="no Selected Takes"): export_selected(p,tmp_path/"final.mp4")
