@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+
+# Film Lab local/runtime data
+data/projects/
+data/logs/
+outputs/
+renders/
+cache/
+temp/
+tmp/
+
+# Generated media and large AI model assets
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wav
+*.flac
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.gguf
+
+# Allow intentionally versioned test fixtures
+!tests/fixtures/**
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Build/package output
+build/
+dist/
+*.egg-info/
+*.log
