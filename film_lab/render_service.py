@@ -1,11 +1,12 @@
-"""End-to-end render service: generator output becomes a durable Take."""
+"""End-to-end render service: Scene World + generator output becomes a durable Take."""
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 from film_lab.generators.base import GenerateJob, Generator
 from film_lab.production import ProductionStore, Take
 from film_lab.project import Project
+from film_lab.scene_context import SceneContextStore, generation_prompt
 from film_lab.shot_card import ShotCard
 
 @dataclass(frozen=True)
@@ -22,14 +23,32 @@ def generate_take(project: Project, shot: ShotCard, start_path: Path | str, gene
     scene = (scene_id or shot.scene_id or "scene_001").strip() or "scene_001"
     out = Path(output_path) if output_path else project.outputs_dir / f"{shot.id}_generated.mp4"
     out.parent.mkdir(parents=True, exist_ok=True)
-    job = GenerateJob(shot=shot, start_path=start, end_path=Path(shot.end_frame) if shot.end_frame else None, output_path=out)
-    generated = Path(generator.generate(job))
+
+    # Scene World is a persistent production input, not just UI text. Preserve the
+    # original Shot prompt while composing a context-rich prompt for this render.
+    raw_prompt = prompt if prompt is not None else shot.local_prompt()
+    world = SceneContextStore(project).get(scene)
+    composed_prompt = generation_prompt(project, scene, raw_prompt)
+    original_prompt = shot.prompt
+    shot.prompt = composed_prompt
+    try:
+        job = GenerateJob(shot=shot, start_path=start, end_path=Path(shot.end_frame) if shot.end_frame else None, output_path=out)
+        generated = Path(generator.generate(job))
+    finally:
+        shot.prompt = original_prompt
+
     if not generated.is_file() or generated.stat().st_size <= 0:
         raise RuntimeError("Render engine returned no usable video; no Take was created.")
     engine_id = str(getattr(generator, "id", generator.__class__.__name__))
     engine_label = str(getattr(generator, "label", engine_id))
-    meta = dict(metadata or {}); meta.setdefault("engine_label", engine_label); meta.setdefault("source_still", str(start.resolve()))
-    take = ProductionStore(project).add_take(generated, shot_id=shot.id, scene_id=scene, name=shot.name, generator=engine_id, model=model, prompt=prompt if prompt is not None else shot.local_prompt(), duration=shot.duration, metadata=meta, copy_media=True)
+    meta = dict(metadata or {})
+    meta.setdefault("engine_label", engine_label)
+    meta.setdefault("source_still", str(start.resolve()))
+    meta["scene_world"] = asdict(world)
+    meta["shot_prompt"] = raw_prompt
+    meta["generation_prompt"] = composed_prompt
+    meta["scene_world_version"] = 1
+    take = ProductionStore(project).add_take(generated, shot_id=shot.id, scene_id=scene, name=shot.name, generator=engine_id, model=model, prompt=composed_prompt, duration=shot.duration, metadata=meta, copy_media=True)
     return RenderResult(take=take, generated_path=generated, engine_id=engine_id, engine_label=engine_label)
 
 def import_take(project: Project, media_path: Path | str, *, shot_id: str, scene_id: str = "scene_001", name: str = "", director_notes: str = "", tags: list[str] | None = None) -> Take:
