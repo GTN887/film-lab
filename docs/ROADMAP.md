@@ -1,23 +1,41 @@
 # Film Lab Roadmap
 
-## Production slice 1 — prove the filmmaking loop
+## North star
+Project → Story → Characters/Sets → Scene → Shot → Take → Selected Take → Cinema → Export
 
-Build and verify this complete chain before expanding more desks:
+Creator flow: Upload → Direct → Create → Review → Refine → Export.
 
-1. Image/reference + Director instruction.
-2. Genuine motion generation through the configured rendering engine.
-3. Generated MP4 automatically becomes a persistent Take.
-4. Take appears in Take Board with Review / Selected / Rejected state.
-5. Exactly one Selected Take per Shot.
-6. Notes, tags, status, and media survive application restart.
-7. Selected Take flows into Cinema.
-8. Cinema produces a real export.
-9. Mark & Direct creates a new Take only when targeted regeneration is genuinely available.
+## Milestone 1 — Production spine
+- [x] Persistent Take records with real media paths.
+- [x] Review / Selected / Rejected state.
+- [x] Exactly one Selected Take per Shot.
+- [x] Persistent Director Notes, tags, generator/model metadata.
+- [x] Generated/imported real video can be registered as a Take.
+- [x] Cinema manifest consumes Selected Takes only.
+- [x] Real single-Take Cinema copy and multi-Take ffmpeg stitch service.
+- [x] Local authoritative Take Board controls wired to persistent actions (239-test recovery build).
+- [ ] Import the complete authoritative application source tree into GitHub so repository CI can exercise app.py/ui_handlers.py directly.
+- [ ] Verify Take Board controls in the running Creator UI on Windows.
+- [ ] Verify genuine AMD/ComfyUI generation on Creator hardware.
 
-## Hardware strategy
+## Milestone 2 — Director production loop
+- [ ] Generated MP4 appears automatically on Take Board with engine/model metadata.
+- [ ] Mark & Direct targeted regeneration creates a new Take while preserving the original.
+- [ ] Persistent Scene World state is consumed by generation.
+- [ ] Character continuity/identity references flow through shots and Takes.
+- [ ] Director Command orchestrates Scene World, performance, camera, motion and generation.
 
-Film Lab is hardware-adaptive rather than tied to one GPU. Rendering capability is selected through engine/model adapters and hardware profiles so stronger future hardware can enable larger models, higher resolution, longer or more complex generation, and greater parallelism without redesigning Film Lab.
+## Milestone 3 — Film finishing
+- [ ] Selected Takes flow into Cinema timeline/order controls.
+- [ ] Voice/audio is attached to production state and export.
+- [ ] Effects/finish clearly distinguish real ffmpeg operations from conditional generative workflows.
+- [ ] Long-form sequence export and recovery are regression tested.
 
-## Product truth
+## Milestone 4 — Creator desktop release
+- [ ] Dedicated Film Lab native window verified on Windows without browser chrome in normal use.
+- [ ] Existing project migration/compatibility verified.
+- [ ] Installer/release packaging verified.
+- [ ] End-to-end acceptance: create/open project → generate/import → Take Board → select/direct → Cinema → exported film.
 
-The goal is a top-tier AI filmmaking system. Comparisons with commercial products are targets, not completion claims. Film Lab only claims a capability after it works end to end and is verified.
+## Truth rules
+PASS / PARTIAL / FAIL / NOT TESTED and REAL / UI-ONLY / STUB are mandatory. UI presence never counts as functional completion. Hardware-dependent features remain NOT TESTED until exercised on the target machine.
