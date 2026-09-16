@@ -1,56 +1,42 @@
-# Python
+dist/
+.venv/
+venv/
 __pycache__/
 *.py[cod]
+*.egg-info/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-.venv/
-venv/
-env/
-
-# Secrets and local configuration
-.env
-.env.*
-!.env.example
-*.key
-*.pem
-secrets.json
-
-# Film Lab local/runtime data
-data/projects/
-data/logs/
-outputs/
-renders/
-cache/
-temp/
-tmp/
-
-# Generated media and large AI model assets
-*.mp4
-*.mov
-*.avi
-*.mkv
-*.wav
-*.flac
-*.ckpt
-*.safetensors
-*.pt
-*.pth
-*.onnx
-*.gguf
-
-# Allow intentionally versioned test fixtures
-!tests/fixtures/**
-
-# OS / IDE
+.python-version
 .DS_Store
 Thumbs.db
-desktop.ini
-.vscode/
-.idea/
 
-# Build/package output
-build/
-dist/
-*.egg-info/
-*.log
+# Local project media (never commit stills or renders)
+data/projects/*/stills/
+data/projects/*/outputs/
+data/projects/*/audio/
+data/projects/*/writing/
+data/projects/*/characters/*/refs/
+data/characters/*/refs/
+data/projects/*/*.mp4
+data/projects/*/extend_sequence.json
+data/projects/*/director_notes.json
+data/projects/*/set_notes.json
+data/projects/*/env_lock.json
+data/projects/*/env_refs/
+data/projects/*/sets/
+data/projects/*/takes/
+data/projects/*/mark_direct.json
+data/projects/*/direct_frame.png
+data/projects/*/stills/mark_masks/
+data/projects/*/note_thumbs/
+data/models/
+data/logs/
+data/safe_mode.flag
+data/install.json
+data/drive_sync.json
+*.mp4
+!examples/**/*.json
+
+.env
+.gradio/

@@ -1,0 +1,26 @@
+{
+  "id": "ab-weight-shift",
+  "name": "Weight shift — intimate",
+  "start_frame": null,
+  "end_frame": null,
+  "start_frame_hint": "Mid-shot of the bed. Adults late-20s. Torsos and hips readable. Sheets half-fallen. Faces still in frame if possible.",
+  "end_frame_hint": "Optional end still after the weight has transferred — a new equilibrium.",
+  "duration": 7.0,
+  "aspect_ratio": "16:9",
+  "camera_move": "low",
+  "subject_motion_strength": 0.7,
+  "body_motion_notes": "Weight shift through the hips. Hands brace. A pause, then a small answering move. Keep it human, not athletic.",
+  "intimacy_mode": "intimate sex",
+  "character_tags": [
+    "Alison (blonde late-20s)",
+    "Bradley (dark hair athletic late-20s)",
+    "wedding bands"
+  ],
+  "lighting": "warm lamp bedroom, low three-quarter, skin held in amber",
+  "negative_prompt": "gym lighting, pornography framing from overhead only, comedy, underage",
+  "seed": 2420,
+  "director_intent": "This is a blocking study. Camera stays low so the bed is a stage, not a specimen table.",
+  "schema_version": 1,
+  "created_at": "2026-09-13T00:00:00+00:00",
+  "updated_at": "2026-09-13T00:00:00+00:00"
+}

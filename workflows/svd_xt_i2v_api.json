@@ -1,0 +1,74 @@
+{
+  "15": {
+    "class_type": "ImageOnlyCheckpointLoader",
+    "inputs": { "ckpt_name": "{{CKPT}}" },
+    "_meta": { "title": "film_lab_ckpt" }
+  },
+  "23": {
+    "class_type": "LoadImage",
+    "inputs": { "image": "{{IMAGE}}" },
+    "_meta": { "title": "film_lab_image" }
+  },
+  "12": {
+    "class_type": "SVD_img2vid_Conditioning",
+    "inputs": {
+      "clip_vision": ["15", 1],
+      "init_image": ["23", 0],
+      "vae": ["15", 2],
+      "width": "{{WIDTH}}",
+      "height": "{{HEIGHT}}",
+      "video_frames": "{{FRAMES}}",
+      "motion_bucket_id": "{{MOTION_BUCKET}}",
+      "fps": "{{FPS}}",
+      "augmentation_level": "{{AUGMENT}}"
+    },
+    "_meta": { "title": "film_lab_svd" }
+  },
+  "14": {
+    "class_type": "VideoLinearCFGGuidance",
+    "inputs": {
+      "model": ["15", 0],
+      "min_cfg": 1.0
+    }
+  },
+  "11": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": "{{SEED}}",
+      "steps": 14,
+      "cfg": 2.5,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 1.0,
+      "model": ["14", 0],
+      "positive": ["12", 0],
+      "negative": ["12", 1],
+      "latent_image": ["12", 2]
+    },
+    "_meta": { "title": "film_lab_seed" }
+  },
+  "8": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": ["11", 0],
+      "vae": ["15", 2]
+    }
+  },
+  "21": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": ["8", 0],
+      "fps": "{{FPS}}"
+    }
+  },
+  "22": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": ["21", 0],
+      "filename_prefix": "film_lab",
+      "format": "mp4",
+      "codec": "h264"
+    },
+    "_meta": { "title": "film_lab_save" }
+  }
+}

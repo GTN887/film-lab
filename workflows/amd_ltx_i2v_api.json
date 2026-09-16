@@ -1,0 +1,92 @@
+{
+  "10": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": { "ckpt_name": "{{CKPT}}" },
+    "_meta": { "title": "film_lab_ckpt" }
+  },
+  "11": {
+    "class_type": "CLIPTextEncode",
+    "inputs": { "text": "{{PROMPT}}", "clip": ["10", 1] },
+    "_meta": { "title": "film_lab_positive" }
+  },
+  "12": {
+    "class_type": "CLIPTextEncode",
+    "inputs": { "text": "{{NEGATIVE}}", "clip": ["10", 1] },
+    "_meta": { "title": "film_lab_negative" }
+  },
+  "13": {
+    "class_type": "LTXVConditioning",
+    "inputs": { "positive": ["11", 0], "negative": ["12", 0], "frame_rate": 8.0 }
+  },
+  "14": {
+    "class_type": "LoadImage",
+    "inputs": { "image": "{{IMAGE}}" },
+    "_meta": { "title": "film_lab_image" }
+  },
+  "15": {
+    "class_type": "LTXVImgToVideo",
+    "inputs": {
+      "positive": ["13", 0],
+      "negative": ["13", 1],
+      "vae": ["10", 2],
+      "image": ["14", 0],
+      "width": "{{WIDTH}}",
+      "height": "{{HEIGHT}}",
+      "length": "{{FRAMES}}",
+      "batch_size": 1,
+      "strength": 1.0
+    }
+  },
+  "16": {
+    "class_type": "LTXVScheduler",
+    "inputs": {
+      "steps": 8,
+      "max_shift": 2.05,
+      "base_shift": 0.95,
+      "stretch": true,
+      "terminal": 0.1,
+      "latent": ["15", 2]
+    }
+  },
+  "17": {
+    "class_type": "KSamplerSelect",
+    "inputs": { "sampler_name": "euler" }
+  },
+  "18": {
+    "class_type": "RandomNoise",
+    "inputs": { "noise_seed": "{{SEED}}" },
+    "_meta": { "title": "film_lab_seed" }
+  },
+  "19": {
+    "class_type": "SamplerCustom",
+    "inputs": {
+      "add_noise": true,
+      "cfg": 3.0,
+      "model": ["10", 0],
+      "positive": ["15", 0],
+      "negative": ["15", 1],
+      "sampler": ["17", 0],
+      "sigmas": ["16", 0],
+      "latent_image": ["15", 2],
+      "noise": ["18", 0]
+    }
+  },
+  "20": {
+    "class_type": "VAEDecode",
+    "inputs": { "samples": ["19", 0], "vae": ["10", 2] }
+  },
+  "21": {
+    "class_type": "CreateVideo",
+    "inputs": { "images": ["20", 0], "fps": 8.0 }
+  },
+  "22": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": ["21", 0],
+      "filename_prefix": "film_lab",
+      "format": "mp4",
+      "codec": "h264"
+    },
+    "_meta": { "title": "film_lab_save" }
+  }
+}

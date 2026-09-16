@@ -1,0 +1,29 @@
+{
+  "id": "sc-bedroom-night",
+  "heading": "INT. BEDROOM - NIGHT",
+  "action": "A cheap lamp holds the room. Alison and Bradley, both late twenties, are already in the bed. Wedding bands catch once. The city is elsewhere.",
+  "lines": [
+    {
+      "character": "ALISON",
+      "parenthetical": "almost not a question",
+      "text": "Stay like that."
+    },
+    {
+      "character": "BRADLEY",
+      "parenthetical": "close",
+      "text": "I wasn't going anywhere."
+    }
+  ],
+  "director_notes": "Covered sheets first. Faces before bodies. The lamp is the only key. Aftercare is the last shot, not a smash cut.",
+  "shot_ids": [
+    "ab-establishing",
+    "ab-ots-alison",
+    "ab-hands-bands",
+    "ab-close-kiss",
+    "ab-weight-shift",
+    "ab-pull-out-hold"
+  ],
+  "status": "idea",
+  "created_at": "2026-09-13T00:00:00+00:00",
+  "updated_at": "2026-09-13T00:00:00+00:00"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ab-ots-alison",
+  "name": "OTS Alison — listening",
+  "start_frame": null,
+  "end_frame": null,
+  "start_frame_hint": "Over Bradley's near shoulder onto Alison's face. Her eyes, mouth, and the fall of blonde hair. His shoulder soft in the foreground.",
+  "end_frame_hint": "Optional: a half-step closer on her eyes if you shoot a landing still.",
+  "duration": 5.0,
+  "aspect_ratio": "16:9",
+  "camera_move": "OTS",
+  "subject_motion_strength": 0.3,
+  "body_motion_notes": "Alison listens. Small swallow. Eyes drop then return. No blocking change.",
+  "intimacy_mode": "covered sheets",
+  "character_tags": [
+    "Alison (blonde late-20s)",
+    "Bradley (dark hair athletic late-20s)"
+  ],
+  "lighting": "warm lamp bedroom, key on Alison, Bradley in soft silhouette",
+  "negative_prompt": "wide shot, both faces equal, overhead practical",
+  "seed": 2417,
+  "director_intent": "Practice OTS eyeline. The foreground shoulder is geography, not decoration.",
+  "schema_version": 1,
+  "created_at": "2026-09-13T00:00:00+00:00",
+  "updated_at": "2026-09-13T00:00:00+00:00"
+}

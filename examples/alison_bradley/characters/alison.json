@@ -1,0 +1,31 @@
+{
+  "id": "alison",
+  "name": "Alison",
+  "age_band": "late 20s (adult)",
+  "age_years": 28,
+  "look_notes": "Blonde, late-20s adult woman. Soft jaw, warm skin, readable eyes.",
+  "wardrobe": "Wedding band on the left hand. Bedroom: bare skin or a fallen sheet.",
+  "voice_notes": "Low-mid, unhurried, close-mic.",
+  "locked_descriptor": "Alison, adult woman late 20s, blonde hair, warm skin, wedding band on left hand, naturalistic",
+  "reference_stills": [],
+  "voice_backend": "auto",
+  "voice_id": "en+f3",
+  "voice_sample": "",
+  "living": {
+    "styles": ["Newlywed nest", "Urban apartment", "Middle-class comfort", "Modern / contemporary"],
+    "custom_style": "",
+    "household_norms": "Two adults. Wedding bands are a story prop, not a lecture.",
+    "income_band": "comfortable",
+    "housing_quality": "cramped",
+    "privacy": "private bedroom",
+    "cleanliness": "lived-in",
+    "neighborhood": "quiet / safe",
+    "utilities": "heat/AC working",
+    "dependents": "none on page",
+    "work_pattern": "mixed / shifts",
+    "health_notes": "",
+    "override": false
+  },
+  "created_at": "2026-09-13T00:00:00+00:00",
+  "updated_at": "2026-09-13T00:00:00+00:00"
+}

@@ -1,0 +1,21 @@
+FILM LAB — PRE-FINISH
+Click this desk. Send feedback videos. Polish later.
+
+1. Unzip. Keep all files together.
+2. Double-click INSTALL_FILM_LAB.bat  (or Install Film Lab.lnk)
+   Choose 1  =  Desktop\Film Lab
+   Need Python 3.11+ on PATH the first time (py -3).
+3. Double-click START_FILM_LAB.bat  (or the Desktop Film Lab icon)
+4. Browser: http://127.0.0.1:43123
+   Leave the Film Lab window open.
+
+What to film:
+  Home (purple + cyan cards)
+  AI Production Pipeline  — dropdowns + aspect frame shapes
+  Motion Desk, Still Desk, Take Board, Character, 3D Set
+
+Regular vs 18+ Explicit = mode toggle only. Same purple theme.
+Comfy video sidecar is optional later. The desk must open now.
+
+Repair: REPAIR.bat
+More detail: PREFINISH.md

@@ -1,0 +1,15 @@
+{
+  "name": "director-empty",
+  "created_at": "2026-09-15T10:30:54+00:00",
+  "description": "",
+  "living": {},
+  "active_cast": [
+    "alison",
+    "bradley"
+  ],
+  "face_lock_strength": 0.55,
+  "active_lighting": "",
+  "filming_mode": "18+ Explicit",
+  "quality": "720p",
+  "aspect": "16:9"
+}

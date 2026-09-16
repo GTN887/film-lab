@@ -1,0 +1,5 @@
+{
+  "film_lab_stub": true,
+  "preset": "floating_fall",
+  "note": "Replace with a ComfyUI API-format graph (nodes with class_type). Until then Effects Desk uses shared SVD-XT img2vid and the Floating fall prompt."
+}

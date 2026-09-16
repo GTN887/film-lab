@@ -1,0 +1,5 @@
+{
+  "film_lab_stub": true,
+  "preset": "openpose_still",
+  "note": "Replace with a ComfyUI API-format graph (OpenposePreprocessor or DWPreprocessor → ControlNetApply on the still). Until this file has class_type nodes, Pose Desk writes a local OpenPose-style overlay and never fakes a ControlNet rewrite. Face lock stays on the original pixels. Then Animate on Motion Desk (shared SVD-XT). Not video puppeting."
+}

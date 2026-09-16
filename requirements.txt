@@ -1,0 +1,23 @@
+# Film Lab — local desktop only. No cloud SDKs.
+gradio>=6.5.1,<7
+pillow>=10.0.0
+numpy>=1.26.0
+pyttsx3>=2.90
+pypdf>=5.0.0
+python-docx>=1.1.0
+python-pptx>=1.0.0
+openpyxl>=3.1.0
+pywebview>=5.0,<7
+
+# Optional local speech-to-text for Director / Mark voice notes (CPU, not NVIDIA):
+#   pip install vosk
+#   unzip vosk-model-small-en-us-0.15 into data/models/
+
+# Optional local image-to-video (CUDA). Install separately when you have a GPU:
+
+# Optional local image-to-video (CUDA). Install separately when you have a GPU:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+#   pip install diffusers transformers accelerate
+#
+# Then set FILM_LAB_I2V_MODEL to a local folder or Hugging Face id
+# (default: stabilityai/stable-video-diffusion-img2vid-xt).

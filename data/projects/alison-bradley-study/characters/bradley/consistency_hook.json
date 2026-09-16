@@ -1,0 +1,58 @@
+{
+  "hook": "local_face_ref",
+  "status": "start_still_primary",
+  "character_id": "bradley",
+  "refs": [],
+  "face_lock": {
+    "method": "start_still_i2v",
+    "strength": 0.55,
+    "ref_count": 0,
+    "status": "wired",
+    "notes": "Start-frame likeness is the 6GB program. Heavier graphs stay stubs until ComfyUI lists them."
+  },
+  "stack": [
+    {
+      "key": "start_still_i2v",
+      "title": "Reference still → img2vid",
+      "status": "primary",
+      "vram": "~4–6GB DirectML"
+    },
+    {
+      "key": "ipadapter_faceid_plus_v2",
+      "title": "IP-Adapter FaceID Plus V2",
+      "status": "stub",
+      "vram": "tight on 6GB"
+    },
+    {
+      "key": "instantid",
+      "title": "InstantID (SDXL)",
+      "status": "stub",
+      "vram": "heavy for 6GB"
+    },
+    {
+      "key": "pulid",
+      "title": "PuLID (Flux path)",
+      "status": "advanced",
+      "vram": "not for 6GB first"
+    },
+    {
+      "key": "openpose",
+      "title": "ControlNet OpenPose (Pose Desk)",
+      "status": "wired",
+      "vram": "still-first, light"
+    },
+    {
+      "key": "face_lora",
+      "title": "Character LoRA (train later)",
+      "status": "advanced",
+      "vram": "train off-box or overnight"
+    },
+    {
+      "key": "reactor",
+      "title": "ReActor face-fix",
+      "status": "optional",
+      "vram": "post only"
+    }
+  ],
+  "notes": "Primary on RX 5600 XT 6GB: lock the person in the start still, then img2vid. Point a later FaceID / InstantID graph at characters/bradley/refs/. Film Lab does not compute embeddings and does not call a hosted face API."
+}

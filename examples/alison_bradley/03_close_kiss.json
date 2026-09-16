@@ -1,0 +1,26 @@
+{
+  "id": "ab-close-kiss",
+  "name": "Close kiss — artistic nude",
+  "start_frame": null,
+  "end_frame": null,
+  "start_frame_hint": "Cheeks and mouths filling the frame. Adult faces only. Skin and lamp highlight. Wedding band optional in the blur of a hand.",
+  "end_frame_hint": "Landing still after the kiss settles — foreheads together.",
+  "duration": 4.5,
+  "aspect_ratio": "1:1",
+  "camera_move": "slow push-in",
+  "subject_motion_strength": 0.45,
+  "body_motion_notes": "Kiss. Soft jaw change. A hand finds the back of a neck. Breathing stays audible in the still if you can imply it.",
+  "intimacy_mode": "artistic nude",
+  "character_tags": [
+    "Alison (blonde late-20s)",
+    "Bradley (dark hair athletic late-20s)",
+    "wedding bands"
+  ],
+  "lighting": "warm lamp bedroom, tight key, deep falloff",
+  "negative_prompt": "wide room, comic timing, harsh overhead, underage, teen",
+  "seed": 2418,
+  "director_intent": "Study faces, not anatomy. Hold long enough that the kiss is a choice, not a sting.",
+  "schema_version": 1,
+  "created_at": "2026-09-13T00:00:00+00:00",
+  "updated_at": "2026-09-13T00:00:00+00:00"
+}

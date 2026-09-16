@@ -1,0 +1,21 @@
+{
+  "scenes": {
+    "scene-b": {
+      "blocking": [],
+      "camera": {},
+      "characters": [],
+      "continuity_notes": "",
+      "director_instructions": "Night rain. Run and hide. Camera orbits.",
+      "lighting": "",
+      "location": "",
+      "metadata": {},
+      "objects": [],
+      "prior_take_ids": [],
+      "scene_id": "scene-b",
+      "set_id": "",
+      "time_of_day": "night",
+      "weather": "rain"
+    }
+  },
+  "version": 1
+}

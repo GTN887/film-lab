@@ -1,0 +1,77 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": { "ckpt_name": "{{CKPT}}" },
+    "_meta": { "title": "film_lab_ckpt" }
+  },
+  "2": {
+    "class_type": "ADE_LoadAnimateDiffModel",
+    "inputs": { "model_name": "v3_sd15_mm.ckpt" },
+    "_meta": { "title": "film_lab_motion" }
+  },
+  "3": {
+    "class_type": "ADE_ApplyAnimateDiffModelSimple",
+    "inputs": {
+      "motion_model": ["2", 0],
+      "model": ["1", 0],
+      "motion_scale": "{{MOTION_SCALE}}"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": { "text": "{{PROMPT}}", "clip": ["1", 1] },
+    "_meta": { "title": "film_lab_positive" }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": { "text": "{{NEGATIVE}}", "clip": ["1", 1] },
+    "_meta": { "title": "film_lab_negative" }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": { "image": "{{IMAGE}}" },
+    "_meta": { "title": "film_lab_image" }
+  },
+  "7": {
+    "class_type": "VAEEncode",
+    "inputs": { "pixels": ["6", 0], "vae": ["1", 2] }
+  },
+  "8": {
+    "class_type": "EmptyLatentImage",
+    "inputs": { "width": "{{WIDTH}}", "height": "{{HEIGHT}}", "batch_size": "{{FRAMES}}" },
+    "_meta": { "title": "film_lab_latent" }
+  },
+  "9": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": "{{SEED}}",
+      "steps": 12,
+      "cfg": 7.0,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": 0.72,
+      "model": ["3", 0],
+      "positive": ["4", 0],
+      "negative": ["5", 0],
+      "latent_image": ["8", 0]
+    },
+    "_meta": { "title": "film_lab_seed" }
+  },
+  "10": {
+    "class_type": "VAEDecode",
+    "inputs": { "samples": ["9", 0], "vae": ["1", 2] }
+  },
+  "11": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": ["10", 0],
+      "frame_rate": "{{FPS}}",
+      "loop_count": 0,
+      "filename_prefix": "film_lab",
+      "format": "video/h264-mp4",
+      "pingpong": false,
+      "save_output": true
+    },
+    "_meta": { "title": "film_lab_save" }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "film_lab_stub": true,
+  "preset": "melting_hold",
+  "note": "Replace with a ComfyUI API-format graph. Until then Generate uses shared SVD-XT."
+}

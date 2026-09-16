@@ -1,0 +1,4 @@
+{
+  "film_lab_stub": true,
+  "note": "Optional Comfy inpaint graph for Mark & Direct. Until class_type nodes exist, Apply is the local mask + MARK NOTE. Film Lab will not fake an inpaint rewrite."
+}

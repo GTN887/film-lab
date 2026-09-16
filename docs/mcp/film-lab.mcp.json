@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "film-lab": {
+      "command": "python",
+      "args": ["-m", "film_lab.mcp_stub"],
+      "env": {}
+    }
+  },
+  "_comment": "Personal local stub. Not a hosted third-party MCP. Not a paid subscription. A later Film Lab stdio server will keep this command and expose list_projects, list_shots, generate_shot, write_draft. Point OpenClaw, Hermes, Claude Code, or Cursor at 127.0.0.1 only."
+}
